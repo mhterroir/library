@@ -32,6 +32,13 @@ const imageFiles = [
     "h": null
   },
   {
+    "href": "images/full/Generated with Kive.jpg",
+    "thumb": "images/thumbs/Generated with Kive.jpg",
+    "title": "Generated with Kive",
+    "w": null,
+    "h": null
+  },
+  {
     "href": "images/full/Homestead Bay RGB4.avif",
     "thumb": "images/thumbs/Homestead Bay RGB4.avif",
     "title": "Homestead Bay RGB4",
