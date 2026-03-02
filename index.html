@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>blueimp Gallery</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <!-- Your layout styles -->
+  <link rel="stylesheet" href="styles.css" />
+
+  <!-- blueimp Gallery CSS -->
+  <link rel="stylesheet" href="css/blueimp-gallery.min.css" />
+</head>
+<body>
+  <main>
+    <h1>Gallery</h1>
+
+    <!-- Thumbnail grid; script.js will populate this -->
+    <div id="links" class="gallery"></div>
+
+    <!-- blueimp Gallery lightbox container -->
+    <div id="blueimp-gallery" class="blueimp-gallery blueimp-gallery-controls">
+      <div class="slides"></div>
+      <h3 class="title"></h3>
+      <a class="prev">‹</a>
+      <a class="next">›</a>
+      <a class="close">×</a>
+      <a class="play-pause"></a>
+      <ol class="indicator"></ol>
+    </div>
+  </main>
+
+  <!-- blueimp Gallery JS (plain JS build) -->
+  <script src="js/blueimp-gallery.min.js"></script>
+
+  <!-- Your script that builds the links from imageFiles[] -->
+  <script src="script.js"></script>
+
+  <!-- Hook up clicks on thumbnails to blueimp.Gallery -->
+  <script>
+    (function () {
+      const linksContainer = document.getElementById('links');
+
+      linksContainer.onclick = function (event) {
+        event = event || window.event;
+        const target = event.target || event.srcElement;
+
+        // Find the nearest <a>
+        const link = target.closest('a');
+        if (!link) return;
+
+        const links = linksContainer.getElementsByTagName('a');
+        blueimp.Gallery(links, {
+          container: '#blueimp-gallery',
+          index: link,
+          event: event
+        });
+
+        return false;
+      };
+    })();
+  </script>
+</body>
+</html>
